@@ -1,0 +1,2063 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiCont Servicios Contables — ¡Contabilizamos tu éxito!</title>
+
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Font: Outfit (alternativa moderna a Bahnschrift) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* ============================================
+           FUENTES Y VARIABLES
+           ============================================ */
+        @font-face {
+            font-family: 'Bahnschrift';
+            src: url('fonts/Bahnschrift.ttf') format('truetype');
+            font-display: swap;
+        }
+
+        :root {
+            --azul-infantil: #6699FF;
+            --azul-electrico: #6666FF;
+            --azul-marino: #003399;
+            --texto: #333333;
+            --azul-marino-oscuro: #002266;
+            --azul-claro-bg: #f0f4ff;
+            --azul-medio-bg: #e8edf8;
+            --blanco: #ffffff;
+            --sombra-caja: 0 6px 24px rgba(0, 51, 153, 0.10);
+            --sombra-caja-hover: 0 12px 36px rgba(0, 51, 153, 0.18);
+            --transicion: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Bahnschrift', 'Outfit', 'Segoe UI', sans-serif;
+            color: var(--texto);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           NAVBAR
+           ============================================ */
+        .navbar-digicont {
+            background: rgba(0, 34, 102, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 0.6rem 0;
+            transition: var(--transicion);
+            border-bottom: 1px solid rgba(102, 153, 255, 0.15);
+        }
+
+        .navbar-digicont.scrolled {
+            background: rgba(0, 34, 102, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-brand-digi {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .navbar-brand-digi img {
+            height: 44px;
+            width: auto;
+        }
+
+        .navbar-brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.15;
+        }
+
+        .navbar-brand-text .nombre {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--blanco);
+            letter-spacing: -0.02em;
+        }
+
+        .navbar-brand-text .eslogan {
+            font-size: 0.7rem;
+            color: var(--azul-infantil);
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .nav-link-digi {
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-weight: 500;
+            font-size: 0.88rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 8px;
+            transition: var(--transicion);
+            position: relative;
+        }
+
+        .nav-link-digi:hover,
+        .nav-link-digi.active {
+            color: var(--blanco) !important;
+            background: rgba(102, 153, 255, 0.15);
+        }
+
+        .nav-link-digi.active::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 3px;
+            background: var(--azul-infantil);
+            border-radius: 2px;
+        }
+
+        .navbar-toggler-digi {
+            border: 1px solid rgba(102, 153, 255, 0.4);
+            padding: 4px 8px;
+        }
+
+        .navbar-toggler-digi .fa-bars {
+            color: var(--azul-infantil);
+            font-size: 1.2rem;
+        }
+
+        /* ============================================
+           SECCIÓN HERO / INICIO
+           ============================================ */
+        .section-hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(160deg, var(--azul-marino-oscuro) 0%, var(--azul-marino) 40%, #0044aa 100%);
+            overflow: hidden;
+        }
+
+        .section-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('img/fondo/bg2.jpg') center center / cover no-repeat;
+            opacity: 0.12;
+        }
+
+        .section-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: linear-gradient(to top, var(--blanco), transparent);
+        }
+
+        .hero-particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .hero-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--azul-infantil);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: floatUp 8s infinite ease-in-out;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            30% { opacity: 0.4; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(102, 153, 255, 0.15);
+            border: 1px solid rgba(102, 153, 255, 0.3);
+            color: var(--azul-infantil);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 800;
+            color: var(--blanco);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, var(--azul-infantil), var(--azul-electrico));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 560px;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .btn-hero {
+            background: linear-gradient(135deg, var(--azul-infantil), var(--azul-electrico));
+            color: var(--blanco);
+            border: none;
+            padding: 14px 36px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transicion);
+            box-shadow: 0 8px 30px rgba(102, 102, 255, 0.35);
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px rgba(102, 102, 255, 0.5);
+            color: var(--blanco);
+        }
+
+        .hero-image-col {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+        }
+
+        .hero-image-placeholder {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, rgba(102, 153, 255, 0.2), rgba(102, 102, 255, 0.15));
+            border: 2px dashed rgba(102, 153, 255, 0.4);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        .hero-image-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: var(--azul-infantil);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .hero-stat {
+            text-align: left;
+        }
+
+        .hero-stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--azul-infantil);
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 4px;
+        }
+
+        /* ============================================
+           SECCIÓN SERVICIOS
+           ============================================ */
+        .section-servicios {
+            background: var(--blanco);
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-servicios::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(102, 153, 255, 0.06), transparent 70%);
+            pointer-events: none;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--azul-electrico);
+            margin-bottom: 1rem;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background: var(--azul-electrico);
+            border-radius: 1px;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            color: var(--azul-marino);
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: #666;
+            max-width: 640px;
+            line-height: 1.8;
+        }
+
+        .servicio-card {
+            background: var(--blanco);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--sombra-caja);
+            transition: var(--transicion);
+            border: 1px solid rgba(102, 153, 255, 0.08);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .servicio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--azul-infantil), var(--azul-electrico));
+            opacity: 0;
+            transition: var(--transicion);
+        }
+
+        .servicio-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--sombra-caja-hover);
+        }
+
+        .servicio-card:hover::before {
+            opacity: 1;
+        }
+
+        .servicio-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(102, 153, 255, 0.12), rgba(102, 102, 255, 0.08));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+            transition: var(--transicion);
+        }
+
+        .servicio-icon i {
+            font-size: 1.4rem;
+            color: var(--azul-electrico);
+            transition: var(--transicion);
+        }
+
+        .servicio-card:hover .servicio-icon {
+            background: linear-gradient(135deg, var(--azul-infantil), var(--azul-electrico));
+        }
+
+        .servicio-card:hover .servicio-icon i {
+            color: var(--blanco);
+        }
+
+        .servicio-card h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--azul-marino);
+            margin-bottom: 0.7rem;
+        }
+
+        .servicio-card p {
+            font-size: 0.88rem;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           SECCIÓN EQUIPO
+           ============================================ */
+        .section-equipo {
+            background: var(--azul-claro-bg);
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-equipo::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="p" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(0,51,153,0.03)"/></pattern></defs><rect fill="url(%23p)" width="100" height="100"/></svg>');
+            pointer-events: none;
+        }
+
+        .team-card {
+            background: var(--blanco);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--sombra-caja);
+            transition: var(--transicion);
+            text-align: center;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--sombra-caja-hover);
+        }
+
+        .team-photo-wrapper {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1/1;
+            background: linear-gradient(135deg, var(--azul-claro-bg), var(--azul-medio-bg));
+        }
+
+        .team-photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transicion);
+        }
+
+        .team-card:hover .team-photo-wrapper img {
+            transform: scale(1.06);
+        }
+
+        .team-photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--azul-marino);
+            opacity: 0.35;
+        }
+
+        .team-photo-placeholder i {
+            font-size: 3.5rem;
+            margin-bottom: 6px;
+        }
+
+        .team-photo-placeholder span {
+            font-size: 0.7rem;
+        }
+
+        .team-info {
+            padding: 1.2rem 1rem 1.5rem;
+        }
+
+        .team-info h5 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--azul-marino);
+            margin-bottom: 4px;
+        }
+
+        .team-info .role {
+            font-size: 0.8rem;
+            color: var(--azul-electrico);
+            font-weight: 500;
+        }
+
+        /* ============================================
+           SECCIÓN RAZONES
+           ============================================ */
+        .section-razones {
+            background: var(--blanco);
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .razon-card {
+            background: var(--blanco);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            box-shadow: var(--sombra-caja);
+            transition: var(--transicion);
+            border: 1px solid rgba(102, 153, 255, 0.06);
+            height: 100%;
+            position: relative;
+        }
+
+        .razon-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--sombra-caja-hover);
+        }
+
+        .razon-number {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--azul-infantil), var(--azul-electrico));
+            color: var(--blanco);
+            font-size: 1.4rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .razon-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--azul-marino);
+            margin-bottom: 0.8rem;
+        }
+
+        .razon-card p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           SECCIÓN ENFOQUE
+           ============================================ */
+        .section-enfoque {
+            background: var(--azul-claro-bg);
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-enfoque::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to top, var(--azul-medio-bg), transparent);
+            pointer-events: none;
+        }
+
+        .enfoque-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            align-items: flex-start;
+        }
+
+        .enfoque-number {
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 0.85;
+            background: linear-gradient(180deg, var(--azul-infantil), rgba(102, 153, 255, 0.15));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            flex-shrink: 0;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .enfoque-content {
+            background: var(--blanco);
+            border-radius: 16px;
+            padding: 1.8rem 2rem;
+            box-shadow: var(--sombra-caja);
+            flex: 1;
+            transition: var(--transicion);
+        }
+
+        .enfoque-content:hover {
+            box-shadow: var(--sombra-caja-hover);
+            transform: translateX(6px);
+        }
+
+        .enfoque-content h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--azul-marino);
+            margin-bottom: 0.7rem;
+        }
+
+        .enfoque-content p {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.75;
+            margin-bottom: 0;
+        }
+
+        /* ============================================
+           SECCIÓN SOBRE NOSOTROS
+           ============================================ */
+        .section-sobrenosotros {
+            position: relative;
+            padding: 100px 0;
+            background: linear-gradient(160deg, var(--azul-marino-oscuro), var(--azul-marino), #0044aa);
+            overflow: hidden;
+        }
+
+        .section-sobrenosotros::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><defs><pattern id="g" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M0 30h60M30 0v60" stroke="rgba(102,153,255,0.06)" fill="none"/></pattern></defs><rect fill="url(%23g)" width="800" height="600"/></svg>');
+            pointer-events: none;
+        }
+
+        .sobre-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.08rem;
+            line-height: 1.9;
+        }
+
+        .sobre-firma {
+            margin-top: 2rem;
+        }
+
+        .sobre-firma .gracias {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--azul-infantil);
+            margin-bottom: 0.3rem;
+        }
+
+        .sobre-firma .nombre {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 400;
+        }
+
+        .sobre-firma .cargo {
+            font-size: 0.8rem;
+            color: rgba(102, 153, 255, 0.7);
+            font-weight: 500;
+        }
+
+        .sobre-image-wrapper {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+
+        .sobre-image-wrapper img {
+            width: 100%;
+            display: block;
+        }
+
+        .sobre-image-placeholder {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, rgba(102, 153, 255, 0.15), rgba(102, 102, 255, 0.1));
+            border: 2px dashed rgba(102, 153, 255, 0.3);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+        }
+
+        .sobre-image-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: var(--azul-infantil);
+        }
+
+        /* ============================================
+           SECCIÓN HITOS (TIMELINE)
+           ============================================ */
+        .section-hitos {
+            background: var(--blanco);
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--azul-infantil), var(--azul-electrico), var(--azul-marino));
+            border-radius: 2px;
+            transform: translateY(-50%);
+            z-index: 0;
+        }
+
+        .timeline-item {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .timeline-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--azul-infantil), var(--azul-electrico));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            box-shadow: 0 8px 25px rgba(102, 102, 255, 0.35);
+            transition: var(--transicion);
+            position: relative;
+            z-index: 2;
+        }
+
+        .timeline-icon i {
+            font-size: 1.4rem;
+            color: var(--blanco);
+        }
+
+        .timeline-item:hover .timeline-icon {
+            transform: scale(1.15);
+            box-shadow: 0 12px 35px rgba(102, 102, 255, 0.5);
+        }
+
+        .timeline-year-box {
+            background: var(--azul-marino);
+            color: var(--blanco);
+            padding: 8px 24px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            display: inline-block;
+            margin-bottom: 0.8rem;
+            box-shadow: 0 4px 15px rgba(0, 51, 153, 0.25);
+        }
+
+        .timeline-desc {
+            font-size: 0.82rem;
+            color: #555;
+            line-height: 1.6;
+            max-width: 200px;
+            margin: 0 auto;
+            background: var(--blanco);
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: var(--sombra-caja);
+        }
+
+        /* Mobile Timeline Vertical */
+        @media (max-width: 767.98px) {
+            .timeline-line {
+                top: 0;
+                bottom: 0;
+                left: 32px;
+                right: auto;
+                width: 4px;
+                height: 100%;
+                transform: none;
+            }
+
+            .timeline-item {
+                text-align: left;
+                padding-left: 80px;
+                margin-bottom: 2.5rem;
+            }
+
+            .timeline-icon {
+                position: absolute;
+                left: 0;
+                top: 0;
+                margin: 0;
+            }
+
+            .timeline-desc {
+                max-width: 100%;
+            }
+        }
+
+        /* ============================================
+           SECCIÓN CLIENTES
+           ============================================ */
+        .section-clientes {
+            background: var(--azul-claro-bg);
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .cliente-logo-wrapper {
+            background: var(--blanco);
+            border-radius: 14px;
+            padding: 1.2rem;
+            box-shadow: var(--sombra-caja);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 120px;
+            transition: var(--transicion);
+            border: 1px solid rgba(102, 153, 255, 0.06);
+        }
+
+        .cliente-logo-wrapper:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--sombra-caja-hover);
+        }
+
+        .cliente-logo-wrapper img {
+            max-width: 80%;
+            max-height: 80px;
+            object-fit: contain;
+        }
+
+        .cliente-logo-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-size: 0.65rem;
+            text-align: center;
+            gap: 4px;
+        }
+
+        .cliente-logo-placeholder i {
+            font-size: 1.8rem;
+            color: var(--azul-infantil);
+            opacity: 0.4;
+        }
+
+        .cliente-logo-placeholder span {
+            font-weight: 600;
+            color: #999;
+            font-size: 0.72rem;
+        }
+
+        /* ============================================
+           SECCIÓN CONTACTO
+           ============================================ */
+        .section-contacto {
+            background: linear-gradient(160deg, var(--azul-marino-oscuro), var(--azul-marino));
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-contacto::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><defs><pattern id="d" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1.5" fill="rgba(102,153,255,0.04)"/></pattern></defs><rect fill="url(%23d)" width="800" height="600"/></svg>');
+            pointer-events: none;
+        }
+
+        .contacto-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(102, 153, 255, 0.15);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(8px);
+        }
+
+        .contacto-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .contacto-item:last-child {
+            border-bottom: none;
+        }
+
+        .contacto-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(102, 153, 255, 0.15), rgba(102, 102, 255, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contacto-icon i {
+            font-size: 1.1rem;
+            color: var(--azul-infantil);
+        }
+
+        .contacto-item a,
+        .contacto-item span {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: var(--transicion);
+        }
+
+        .contacto-item a:hover {
+            color: var(--azul-infantil);
+        }
+
+        .btn-contacto-modal {
+            background: linear-gradient(135deg, var(--azul-infantil), var(--azul-electrico));
+            color: var(--blanco);
+            border: none;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transicion);
+            box-shadow: 0 8px 30px rgba(102, 102, 255, 0.3);
+        }
+
+        .btn-contacto-modal:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px rgba(102, 102, 255, 0.45);
+            color: var(--blanco);
+        }
+
+        .map-wrapper {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(102, 153, 255, 0.2);
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+
+        /* Modal */
+        .modal-content-digi {
+            background: var(--blanco);
+            border-radius: 20px;
+            border: none;
+            overflow: hidden;
+        }
+
+        .modal-header-digi {
+            background: linear-gradient(135deg, var(--azul-marino), var(--azul-electrico));
+            color: var(--blanco);
+            border: none;
+            padding: 1.5rem 2rem;
+        }
+
+        .modal-header-digi .modal-title {
+            font-weight: 700;
+        }
+
+        .modal-header-digi .btn-close {
+            filter: brightness(0) invert(1);
+        }
+
+        .modal-body-digi {
+            padding: 2rem;
+        }
+
+        .form-control-digi {
+            border: 2px solid #e0e6f0;
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 0.9rem;
+            transition: var(--transicion);
+            font-family: inherit;
+        }
+
+        .form-control-digi:focus {
+            border-color: var(--azul-infantil);
+            box-shadow: 0 0 0 4px rgba(102, 153, 255, 0.15);
+        }
+
+        .btn-enviar-digi {
+            background: linear-gradient(135deg, var(--azul-infantil), var(--azul-electrico));
+            color: var(--blanco);
+            border: none;
+            padding: 12px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: var(--transicion);
+        }
+
+        .btn-enviar-digi:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 102, 255, 0.35);
+            color: var(--blanco);
+        }
+
+        .btn-cerrar-digi {
+            background: #f0f0f0;
+            color: var(--texto);
+            border: none;
+            padding: 12px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: var(--transicion);
+        }
+
+        .btn-cerrar-digi:hover {
+            background: #e0e0e0;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer-digicont {
+            background: var(--azul-marino-oscuro);
+            padding: 2.5rem 0;
+            border-top: 1px solid rgba(102, 153, 255, 0.1);
+        }
+
+        .footer-digicont p {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.82rem;
+            margin: 0;
+        }
+
+        .footer-digicont a {
+            color: var(--azul-infantil);
+            text-decoration: none;
+        }
+
+        /* ============================================
+           TOAST
+           ============================================ */
+        .toast-digi {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--azul-marino), var(--azul-electrico));
+            color: var(--blanco);
+            padding: 16px 28px;
+            border-radius: 14px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+            transform: translateY(120%);
+            transition: var(--transicion);
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toast-digi.show {
+            transform: translateY(0);
+        }
+
+        /* ============================================
+           RESPONSIVE AJUSTES
+           ============================================ */
+        @media (max-width: 991.98px) {
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .section-hero {
+                text-align: center;
+            }
+
+            .hero-text {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .section-hero,
+            .section-servicios,
+            .section-equipo,
+            .section-razones,
+            .section-enfoque,
+            .section-sobrenosotros,
+            .section-hitos,
+            .section-clientes,
+            .section-contacto {
+                padding: 70px 0;
+            }
+
+            .enfoque-number {
+                font-size: 3.5rem;
+                min-width: 55px;
+            }
+
+            .enfoque-item {
+                gap: 1rem;
+            }
+
+            .enfoque-content {
+                padding: 1.3rem 1.2rem;
+            }
+
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+
+        /* Scroll to top */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--azul-infantil), var(--azul-electrico));
+            color: var(--blanco);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 999;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transicion);
+            box-shadow: 0 6px 25px rgba(102, 102, 255, 0.35);
+            cursor: pointer;
+        }
+
+        .scroll-top-btn.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-top-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(102, 102, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         NAVBAR
+         ============================================ -->
+    <nav class="navbar navbar-expand-lg navbar-digicont fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand-digi" href="#inicio">
+                <!-- LOGO: Colocar tu imagen en Img/logo.png -->
+                <img src="Img/logo.png" alt="DigiCont Logo" onerror="this.style.display='none'; this.parentElement.querySelector('.logo-fallback').style.display='flex';">
+                <div class="logo-fallback" style="display:none; width:44px; height:44px; border-radius:10px; background:linear-gradient(135deg, var(--azul-infantil), var(--azul-electrico)); align-items:center; justify-content:center; color:white; font-weight:800; font-size:1.1rem;">DC</div>
+                <div class="navbar-brand-text">
+                    <span class="nombre">DigiCont</span>
+                    <span class="eslogan">¡Contabilizamos tu éxito!</span>
+                </div>
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-digi" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Menú">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navContent">
+                <ul class="navbar-nav ms-auto gap-1">
+                    <li class="nav-item"><a class="nav-link nav-link-digi active" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-digi" href="#servicios">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-digi" href="#equipo">Equipo</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-digi" href="#razones">¿Por qué nosotros?</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-digi" href="#enfoque">Enfoque</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-digi" href="#nosotros">Sobre nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-digi" href="#hitos">Hitos</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-digi" href="#clientes">Clientes</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-digi" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         SECCIÓN 1: INICIO / HERO
+         ============================================ -->
+    <section class="section-hero" id="inicio">
+        <div class="hero-particles">
+            <div class="hero-particle" style="left:10%; animation-delay:0s;"></div>
+            <div class="hero-particle" style="left:25%; animation-delay:1.5s;"></div>
+            <div class="hero-particle" style="left:45%; animation-delay:3s;"></div>
+            <div class="hero-particle" style="left:65%; animation-delay:0.8s;"></div>
+            <div class="hero-particle" style="left:80%; animation-delay:2.2s;"></div>
+            <div class="hero-particle" style="left:90%; animation-delay:4s;"></div>
+        </div>
+
+        <div class="container hero-content">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="hero-badge">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        Distribuidores oficiales de Versat
+                    </div>
+                    <h1 class="hero-title">
+                        Contabilidad precisa para <span>empresas exitosas</span>
+                    </h1>
+                    <p class="hero-text">
+                        En DigiCont entendemos lo crucial que es para tu negocio contar con una contabilidad precisa, por ello, ofrecemos servicios de instalación, implementación y capacitación en el uso del Sistema Contable Versat, la herramienta que te permitirá tener tu economía bajo control.
+                    </p>
+                    <a href="#contacto" class="btn-hero">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        Contáctanos hoy
+                    </a>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-number">15+</div>
+                            <div class="hero-stat-label">Años de experiencia Versat</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-number">12+</div>
+                            <div class="hero-stat-label">Clientes activos</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-number">5</div>
+                            <div class="hero-stat-label">Especialistas</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 hero-image-col" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="hero-image-wrapper">
+                        <!-- IMAGEN: Colocar en img/Equipo01.jpg -->
+                        <img src="img/Equipo01.jpg" alt="Equipo de trabajo DigiCont" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'hero-image-placeholder\'><i class=\'fa-solid fa-users\'></i>Equipo de trabajo DigiCont<br><small>Colocar imagen: img/Equipo01.jpg</small></div>';">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECCIÓN 2: SERVICIOS
+         ============================================ -->
+    <section class="section-servicios" id="servicios">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <div class="section-label">Nuestros Servicios</div>
+                <h2 class="section-title">¿Te preocupa la complejidad<br>de tu contabilidad?</h2>
+                <p class="section-subtitle mx-auto">
+                    En DigiCont, te ofrecemos la solución; nuestros servicios de instalación y capacitación para el uso del Versat Sarasola te permitirán simplificar tus procesos financieros y centrarte en el crecimiento de tu empresa.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Servicio 1 -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+                    <div class="servicio-card">
+                        <div class="servicio-icon">
+                            <i class="fa-solid fa-download"></i>
+                        </div>
+                        <h4>Distribución e Instalación de Sistemas Contables</h4>
+                        <p>Proveemos e instalamos sistemas contables automatizados certificados, adaptados a las necesidades específicas de tu negocio. Nuestro proceso de implementación garantiza una integración fluida y sin interrupciones en tu operación diaria.</p>
+                    </div>
+                </div>
+                <!-- Servicio 2 -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="servicio-card">
+                        <div class="servicio-icon">
+                            <i class="fa-solid fa-sitemap"></i>
+                        </div>
+                        <h4>Organización, Asesoría y Operación</h4>
+                        <p>Te acompañamos en la estructuración completa de tu sistema contable. Desde la planificación inicial hasta la operación cotidiana, brindamos asesoría experta para que cada proceso financiero se ejecute con eficiencia y cumplimiento normativo.</p>
+                    </div>
+                </div>
+                <!-- Servicio 3 -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="servicio-card">
+                        <div class="servicio-icon">
+                            <i class="fa-solid fa-file-invoice-dollar"></i>
+                        </div>
+                        <h4>Balances Mensuales y Fichas de Costo</h4>
+                        <p>Elaboramos balances mensuales detallados y fichas de costo precisas, cumpliendo con las resoluciones vigentes. Esta información clave te permite tomar decisiones estratégicas fundamentadas en datos reales de tu negocio.</p>
+                    </div>
+                </div>
+                <!-- Servicio 4 -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="servicio-card">
+                        <div class="servicio-icon">
+                            <i class="fa-solid fa-magnifying-glass-chart"></i>
+                        </div>
+                        <h4>Auditoría para Control y Ayuda</h4>
+                        <p>Realizamos auditorías exhaustivas que identifican fisuras en tus procesos contables y te proporcionamos las correcciones necesarias. Nuestro objetivo es inmunizar tu negocio de errores y garantizar el cumplimiento fiscal ante cualquier inspección.</p>
+                    </div>
+                </div>
+                <!-- Servicio 5 -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="servicio-card">
+                        <div class="servicio-icon">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+                        </div>
+                        <h4>Capacitación en el Sistema</h4>
+                        <p>Capacitamos a tu equipo para la preparación e introducción de datos en el sistema contable de forma autónoma y eficiente. Nuestra formación es práctica, personalizada y adaptada a las particularidades de tu empresa.</p>
+                    </div>
+                </div>
+                <!-- Servicio 6 -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="servicio-card">
+                        <div class="servicio-icon">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <h4>Asesoría Continua</h4>
+                        <p>Nuestro compromiso no termina con la implementación. Ofrecemos asesoría continua y soporte permanente para resolver tus dudas, actualizar procesos y asegurar que tu contabilidad siempre se mantenga impecable y al día con las regulaciones.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECCIÓN 3: EQUIPO DIRECTIVO
+         ============================================ -->
+    <section class="section-equipo" id="equipo">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <div class="section-label">Nuestro Equipo</div>
+                <h2 class="section-title">Equipo Directivo</h2>
+                <p class="section-subtitle mx-auto">
+                    En DigiCont, contamos con un equipo directivo comprometido y experimentado que guía nuestra visión y estrategia. Cada miembro aporta una sólida trayectoria en su área de especialización, combinando liderazgo, innovación y pasión por la excelencia. Juntos, trabajan para fomentar un ambiente colaborativo y asegurar el crecimiento sostenible de nuestra organización, siempre enfocados en ofrecer el mejor servicio a nuestros clientes.
+                </p>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <!-- Vladimir Pérez -->
+                <div class="col-6 col-md-4 col-lg-2-4" data-aos="fade-up" data-aos-delay="0" style="flex: 0 0 auto; width: 19%;">
+                    <div class="team-card">
+                        <div class="team-photo-wrapper">
+                            <!-- IMAGEN: img/Vladimir con pelo.jpg -->
+                            <img src="img/Vladimir con pelo.jpg" alt="Vladimir Pérez" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'team-photo-placeholder\'><i class=\'fa-solid fa-user-tie\'></i><span>Foto: Vladimir con pelo.jpg</span></div>';">
+                        </div>
+                        <div class="team-info">
+                            <h5>Vladimir Pérez</h5>
+                            <span class="role">Líder Contador</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Orlando Gómez -->
+                <div class="col-6 col-md-4 col-lg-2-4" data-aos="fade-up" data-aos-delay="100" style="flex: 0 0 auto; width: 19%;">
+                    <div class="team-card">
+                        <div class="team-photo-wrapper">
+                            <!-- IMAGEN: img/yo actual 2.jpg -->
+                            <img src="img/yo actual 2.jpg" alt="Orlando Gómez" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'team-photo-placeholder\'><i class=\'fa-solid fa-user-tie\'></i><span>Foto: yo actual 2.jpg</span></div>';">
+                        </div>
+                        <div class="team-info">
+                            <h5>Orlando Gómez</h5>
+                            <span class="role">Tecnología y Marketing</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mayelín Rodríguez -->
+                <div class="col-6 col-md-4 col-lg-2-4" data-aos="fade-up" data-aos-delay="200" style="flex: 0 0 auto; width: 19%;">
+                    <div class="team-card">
+                        <div class="team-photo-wrapper">
+                            <!-- IMAGEN: img/Maye foto2.jpg -->
+                            <img src="img/Maye foto2.jpg" alt="Mayelín Rodríguez" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'team-photo-placeholder\'><i class=\'fa-solid fa-user-tie\'></i><span>Foto: Maye foto2.jpg</span></div>';">
+                        </div>
+                        <div class="team-info">
+                            <h5>Mayelín Rodríguez</h5>
+                            <span class="role">Contabilidad</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Ernesto García -->
+                <div class="col-6 col-md-4 col-lg-2-4" data-aos="fade-up" data-aos-delay="300" style="flex: 0 0 auto; width: 19%;">
+                    <div class="team-card">
+                        <div class="team-photo-wrapper">
+                            <!-- IMAGEN: img/Erne.jpg -->
+                            <img src="img/Erne.jpg" alt="Ernesto García" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'team-photo-placeholder\'><i class=\'fa-solid fa-user-tie\'></i><span>Foto: Erne.jpg</span></div>';">
+                        </div>
+                        <div class="team-info">
+                            <h5>Ernesto García</h5>
+                            <span class="role">Atención a Clientes</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Ramón Santos -->
+                <div class="col-6 col-md-4 col-lg-2-4" data-aos="fade-up" data-aos-delay="400" style="flex: 0 0 auto; width: 19%;">
+                    <div class="team-card">
+                        <div class="team-photo-wrapper">
+                            <!-- IMAGEN: img/Santos foto.jpg -->
+                            <img src="img/Santos foto.jpg" alt="Ramón Santos" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'team-photo-placeholder\'><i class=\'fa-solid fa-user-tie\'></i><span>Foto: Santos foto.jpg</span></div>';">
+                        </div>
+                        <div class="team-info">
+                            <h5>Ramón Santos</h5>
+                            <span class="role">Atención a Clientes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECCIÓN 4: RAZONES PARA ELEGIRNOS
+         ============================================ -->
+    <section class="section-razones" id="razones">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <div class="section-label">¿Por qué elegirnos?</div>
+                <h2 class="section-title">Razones para elegirnos</h2>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+                    <div class="razon-card text-center">
+                        <div class="razon-number mx-auto">1</div>
+                        <h4>Experiencia comprobada</h4>
+                        <p>Confía en nuestro conocimiento y experiencia para implementar esta solución efectiva en tu empresa o negocio. Años de trabajo nos respaldan en cada proyecto.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
+                    <div class="razon-card text-center">
+                        <div class="razon-number mx-auto">2</div>
+                        <h4>Acompañamiento personalizado</h4>
+                        <p>Asegúrate de que tu equipo domine totalmente el Versat gracias a nuestra capacitación adaptada a tu empresa. No dejamos nada al azar.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="razon-card text-center">
+                        <div class="razon-number mx-auto">3</div>
+                        <h4>Respuesta inmediata</h4>
+                        <p>Estamos siempre disponibles para atender tus consultas y brindarte el apoyo que necesitas. Tu tranquilidad es nuestra prioridad.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECCIÓN 5: ¿EN QUÉ ENFOCAMOS NUESTRO TRABAJO?
+         ============================================ -->
+    <section class="section-enfoque" id="enfoque">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <div class="section-label">Nuestro Trabajo</div>
+                <h2 class="section-title">¿En qué enfocamos<br>nuestro trabajo?</h2>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <!-- Enfoque 01 -->
+                    <div class="enfoque-item" data-aos="fade-right" data-aos-delay="0">
+                        <div class="enfoque-number">01</div>
+                        <div class="enfoque-content">
+                            <h4>Asegúrese de disponer de un sistema contable automatizado y certificado</h4>
+                            <p>DigiCont se encarga de automatizar sus procesos contables mediante el uso del Versat (sistema certificado en Cuba con más de 15 años de experiencia). Trabajamos con las últimas actualizaciones de las regulaciones vigentes para MiPyMEs y TCP. Somos distribuidores oficiales del sistema contable Versat proporcionándole seguridad a su negocio.</p>
+                        </div>
+                    </div>
+                    <!-- Enfoque 02 -->
+                    <div class="enfoque-item" data-aos="fade-right" data-aos-delay="100">
+                        <div class="enfoque-number">02</div>
+                        <div class="enfoque-content">
+                            <h4>Perfeccione la confección de sus Fichas de Costo</h4>
+                            <p>Nos especializamos en crear las fichas de costo de todos sus servicios y producciones por las resoluciones vigentes establecidas para esta actividad.</p>
+                        </div>
+                    </div>
+                    <!-- Enfoque 03 -->
+                    <div class="enfoque-item" data-aos="fade-right" data-aos-delay="200">
+                        <div class="enfoque-number">03</div>
+                        <div class="enfoque-content">
+                            <h4>Ofrezca un balance mensual impecable</h4>
+                            <p>DigiCont cuenta con un equipo de profesionales altamente capacitados para llevar el control económico de su negocio, realizamos el cálculo de ingresos y gastos, la ganancia o pérdida mensual, los aportes a la ONAT, balances financieros, confección de nóminas, estados de cuentas; en general, valoramos cómo se proyecta el negocio y los recursos con el fin de apoyarlo en la toma de decisiones y sugerir estrategias que mejoren sus ganancias.</p>
+                        </div>
+                    </div>
+                    <!-- Enfoque 04 -->
+                    <div class="enfoque-item" data-aos="fade-right" data-aos-delay="300">
+                        <div class="enfoque-number">04</div>
+                        <div class="enfoque-content">
+                            <h4>Mantenga un constante control de su sistema contable</h4>
+                            <p>Analizamos sus flujos contables, descubrimos las fortalezas y/o debilidades. DigiCont le proporciona un sistema de modelos y flujo documental con los requisitos que establecen nuestras leyes para cada sector.</p>
+                        </div>
+                    </div>
+                    <!-- Enfoque 05 -->
+                    <div class="enfoque-item" data-aos="fade-right" data-aos-delay="400">
+                        <div class="enfoque-number">05</div>
+                        <div class="enfoque-content">
+                            <h4>Audite usted mismo su negocio y corrija las posibles fisuras en su contabilidad</h4>
+                            <p>Estudiamos su año contable y determinamos todas las posibles fisuras de su negocio en lo referente al control económico. Valoramos si sus aportes a la ONAT se han realizado de forma correcta, organizando y corrigiendo todos los procesos contables para inmunizarle de errores. Prestamos servicio de actualización e implementación de tus Fichas de Costos, Gastos de Productos y Servicios para la evaluación de los precios.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECCIÓN 6: SOBRE NOSOTROS
+         ============================================ -->
+    <section class="section-sobrenosotros" id="nosotros">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-7" data-aos="fade-right">
+                    <div class="section-label" style="color: var(--azul-infantil);">Sobre Nosotros</div>
+                    <h2 class="section-title" style="color: var(--blanco); font-size: clamp(1.6rem, 3vw, 2.4rem);">DigiCont se encarga de llevar el control económico de tu negocio</h2>
+                    <p class="sobre-text">
+                        Realizamos el cálculo de ingresos y gastos, aportes a la ONAT, balances financieros, nóminas, estados de cuentas; en general, te ayudamos a mantener un control preciso de tus finanzas.
+                    </p>
+                    <div class="sobre-firma">
+                        <div class="gracias">Gracias…</div>
+                        <div class="nombre">Vladimir Pérez</div>
+                        <div class="cargo">Director Ejecutivo de DigiCont</div>
+                    </div>
+                </div>
+                <div class="col-lg-5" data-aos="fade-left" data-aos-delay="200">
+                    <div class="sobre-image-wrapper">
+                        <!-- IMAGEN: Img/Vladimir traje.jpg -->
+                        <img src="Img/Vladimir traje.jpg" alt="Vladimir Pérez - Director Ejecutivo" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'sobre-image-placeholder\'><i class=\'fa-solid fa-user-tie\'></i>Vladimir Pérez<br><small>Colocar imagen: Img/Vladimir traje.jpg</small></div>';">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECCIÓN 7: HITOS DE DIGICONT (TIMELINE)
+         ============================================ -->
+    <section class="section-hitos" id="hitos">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <div class="section-label">Nuestra Trayectoria</div>
+                <h2 class="section-title">Hitos de DigiCont</h2>
+                <p class="section-subtitle mx-auto">El camino que hemos recorrido y la visión que nos impulsa hacia el futuro.</p>
+            </div>
+
+            <!-- Desktop Timeline -->
+            <div class="d-none d-md-block">
+                <div class="timeline" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timeline-line"></div>
+                    <div class="row" style="position: relative; z-index: 1;">
+                        <div class="col timeline-item">
+                            <div class="timeline-icon">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                            <div class="timeline-year-box">2023</div>
+                            <div class="timeline-desc">Creación formal del equipo DigiCont con un contador, un comercial y un informático para iniciar el Servicio a Clientes.</div>
+                        </div>
+                        <div class="col timeline-item">
+                            <div class="timeline-icon">
+                                <i class="fa-solid fa-building"></i>
+                            </div>
+                            <div class="timeline-year-box">2024</div>
+                            <div class="timeline-desc">Preparación de la oficina central. Capacitación en la instalación y preparación del Sistema contable para el equipo DigiCont.</div>
+                        </div>
+                        <div class="col timeline-item">
+                            <div class="timeline-icon">
+                                <i class="fa-solid fa-lightbulb"></i>
+                            </div>
+                            <div class="timeline-year-box">2025</div>
+                            <div class="timeline-desc">Desarrollo de innovadoras herramientas contables para mejorar el servicio.</div>
+                        </div>
+                        <div class="col timeline-item">
+                            <div class="timeline-icon">
+                                <i class="fa-solid fa-rocket"></i>
+                            </div>
+                            <div class="timeline-year-box">2026</div>
+                            <div class="timeline-desc">Despliegue de las nuevas herramientas a nivel nacional conjuntamente con el servicio contable.</div>
+                        </div>
+                        <div class="col timeline-item">
+                            <div class="timeline-icon">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                            <div class="timeline-year-box">2030</div>
+                            <div class="timeline-desc">Crecimiento exponencial de la empresa. Incremento de especialistas y formación de un equipo de I+D más sólido.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Timeline -->
+            <div class="d-md-none">
+                <div class="timeline">
+                    <div class="timeline-line"></div>
+
+                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="0">
+                        <div class="timeline-icon">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <div class="timeline-year-box">2023</div>
+                        <div class="timeline-desc">Creación formal del equipo DigiCont con un contador, un comercial y un informático para iniciar el Servicio a Clientes.</div>
+                    </div>
+
+                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="timeline-icon">
+                            <i class="fa-solid fa-building"></i>
+                        </div>
+                        <div class="timeline-year-box">2024</div>
+                        <div class="timeline-desc">Preparación de la oficina central. Capacitación en la instalación y preparación del Sistema contable para el equipo DigiCont.</div>
+                    </div>
+
+                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="timeline-icon">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <div class="timeline-year-box">2025</div>
+                        <div class="timeline-desc">Desarrollo de innovadoras herramientas contables para mejorar el servicio.</div>
+                    </div>
+
+                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="timeline-icon">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <div class="timeline-year-box">2026</div>
+                        <div class="timeline-desc">Despliegue de las nuevas herramientas a nivel nacional conjuntamente con el servicio contable.</div>
+                    </div>
+
+                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+                        <div class="timeline-icon">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <div class="timeline-year-box">2030</div>
+                        <div class="timeline-desc">Crecimiento exponencial de la empresa. Incremento de especialistas y formación de un equipo de I+D más sólido.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECCIÓN 8: NUESTROS CLIENTES
+         ============================================ -->
+    <section class="section-clientes" id="clientes">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <div class="section-label">Confianza Mutua</div>
+                <h2 class="section-title">Nuestros Clientes</h2>
+                <p class="section-subtitle mx-auto">
+                    En DigiCont nos enorgullecemos de colaborar con una variedad de clientes que abarcan diferentes sectores, cada uno de nuestros clientes aporta una visión única y desafíos que nos permiten innovar y crecer juntos. Nuestra dedicación a ofrecer soluciones personalizadas y de alta calidad nos ha permitido construir relaciones sólidas y duraderas. Estamos comprometidos con el éxito de nuestros clientes, trabajando codo a codo para alcanzar sus objetivos y superar sus expectativas.
+                </p>
+            </div>
+
+            <div class="row g-3 justify-content-center">
+                <!-- Cliente 1 -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2" data-aos="fade-up" data-aos-delay="0">
+                    <div class="cliente-logo-wrapper">
+                        <img src="Img/LogosUsusarios/01.Samper.jpg" alt="Samper Construcciones" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'cliente-logo-placeholder\'><i class=\'fa-solid fa-building\'></i><span>Samper Construcciones</span></div>';">
+                    </div>
+                </div>
+                <!-- Cliente 2 -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2" data-aos="fade-up" data-aos-delay="50">
+                    <div class="cliente-logo-wrapper">
+                        <img src="Img/LogosUsusarios/02.ConKronos.jpg" alt="ConKronos" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'cliente-logo-placeholder\'><i class=\'fa-solid fa-industry\'></i><span>ConKronos</span></div>';">
+                    </div>
+                </div>
+                <!-- Cliente 3 -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2" data-aos="fade-up" data-aos-delay="100">
+                    <div class="cliente-logo-wrapper">
+                        <img src="Img/LogosUsusarios/03.Conuco.jpg" alt="Del Conuco Sabor Sensat" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'cliente-logo-placeholder\'><i class=\'fa-solid fa-utensils\'></i><span>Del Conuco Sabor Sensat</span></div>';">
+                    </div>
+                </div>
+                <!-- Cliente 4 -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2" data-aos="fade-up" data-aos-delay="150">
+                    <div class="cliente-logo-wrapper">
+                        <img src="Img/LogosUsusarios/04.DObel.jpg" alt="Jamones y Embutidos D'Obel" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'cliente-logo-placeholder\'><i class=\'fa-solid fa-bacon\'></i><span>Jamones y Embutidos D\'Obel</span></div>';">
+                    </div>
+                </div>
+                <!-- Cliente 5 -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2" data-aos="fade-up" data-aos-delay="200">
+                    <div class="cliente-logo-wrapper">
+                        <img src="Img/LogosUsusarios/05.Agromy.jpg" alt="Agromy" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'cliente-logo-placeholder\'><i class=\'fa-solid fa-seedling\'></i><span>Agromy</span></div>';">
+                    </div>
+                </div>
+                <!-- Cliente 6 -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2" data-aos="fade-up" data-aos-delay="250">
+                    <div class="cliente-logo-wrapper">
+                        <img src="Img/LogosUsusarios/06.Ferreteria La Broca.jpg" alt="Ferretería La Broca" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'cliente-logo-placeholder\'><i class=\'fa-solid fa-screwdriver-wrench\'></i><span>Ferretería La Broca</span></div>';">
+                    </div>
+                </div>
+                <!-- Cliente 7 -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2" data-aos="fade-up" data-aos-delay="300">
+                    <div class="cliente-logo-wrapper">
+                        <img src="Img/LogosUsusarios/07.PAN23.jpg" alt="Cafetería y Mercadito PAN23" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'cliente-logo-placeholder\'><i class=\'fa-solid fa-store\'></i><span>Cafetería y Mercadito PAN23</span></div>';">
+                    </div>
+                </div>
+                <!-- Cliente 8 -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2" data-aos="fade-up" data-aos-delay="350">
+                    <div class="cliente-logo-wrapper">
+                        <img src="Img/LogosUsusarios/08.Estancia La Petrona.jpg" alt="Estancia La Petrona" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'cliente-logo-placeholder\'><i class=\'fa-solid fa-house-chimney\'></i><span>Estancia La Petrona</span></div>';">
+                    </div>
+                </div>
+                <!-- Cliente 9 -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2" data-aos="fade-up" data-aos-delay="400">
+                    <div class="cliente-logo-wrapper">
+                        <img src="Img/LogosUsusarios/09.V&E LAVANE.jpg" alt="V&E LAVANE" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'cliente-logo-placeholder\'><i class=\'fa-solid fa-briefcase\'></i><span>V&E LAVANE</span></div>';">
+                    </div>
+                </div>
+                <!-- Cliente 10 -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2" data-aos="fade-up" data-aos-delay="450">
+                    <div class="cliente-logo-wrapper">
+                        <img src="Img/LogosUsusarios/10.Chaviano.jpg" alt="Negocios Chaviano" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'cliente-logo-placeholder\'><i class=\'fa-solid fa-handshake\'></i><span>Negocios Chaviano</span></div>';">
+                    </div>
+                </div>
+                <!-- Cliente 11 -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2" data-aos="fade-up" data-aos-delay="500">
+                    <div class="cliente-logo-wrapper">
+                        <img src="Img/LogosUsusarios/11.Panaderia La Rosa.jpg" alt="Panadería La Rosa" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'cliente-logo-placeholder\'><i class=\'fa-solid fa-bread-slice\'></i><span>Panadería La Rosa</span></div>';">
+                    </div>
+                </div>
+                <!-- Cliente 12 -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2" data-aos="fade-up" data-aos-delay="550">
+                    <div class="cliente-logo-wrapper">
+                        <img src="Img/LogosUsusarios/12.RENOVO FERMAR.jpg" alt="Construcciones RENOVO" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'cliente-logo-placeholder\'><i class=\'fa-solid fa-helmet-safety\'></i><span>Construcciones RENOVO</span></div>';">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECCIÓN 9: CONTACTO
+         ============================================ -->
+    <section class="section-contacto" id="contacto">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="section-label" style="color: var(--azul-infantil);">Hablemos</div>
+                    <h2 class="section-title" style="color: var(--blanco);">Contactos</h2>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 1.05rem; margin-bottom: 2rem;">
+                        No dejes que la gestión financiera sea un dolor de cabeza. ¡Contacta con nosotros para descubrir cómo podemos ayudarte!
+                    </p>
+
+                    <div class="contacto-card">
+                        <div class="contacto-item">
+                            <div class="contacto-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <a href="mailto:digicontservicioscontables@gmail.com">digicontservicioscontables@gmail.com</a>
+                        </div>
+                        <div class="contacto-item">
+                            <div class="contacto-icon"><i class="fa-brands fa-instagram"></i></div>
+                            <a href="https://instagram.com/DigiContServiciosContables" target="_blank">@DigiContServiciosContables</a>
+                        </div>
+                        <div class="contacto-item">
+                            <div class="contacto-icon"><i class="fa-brands fa-telegram"></i></div>
+                            <a href="https://t.me/digicontvp" target="_blank">@t.me/digicontvp</a>
+                        </div>
+                        <div class="contacto-item">
+                            <div class="contacto-icon"><i class="fa-brands fa-facebook"></i></div>
+                            <a href="#" target="_blank">DigiCont Servicios Contables</a>
+                        </div>
+                        <div class="contacto-item">
+                            <div class="contacto-icon"><i class="fa-brands fa-youtube"></i></div>
+                            <a href="#" target="_blank">@DigiContServiciosContables</a>
+                        </div>
+                        <div class="contacto-item">
+                            <div class="contacto-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <span>Calle 10 #52 Apto. 20 e/ 3a y 5a Vedado, Plaza, La Habana.</span>
+                        </div>
+                        <div class="contacto-item">
+                            <div class="contacto-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+                            <a href="tel:+5350650563">+53 5 065 05 63</a>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <button class="btn-contacto-modal" data-bs-toggle="modal" data-bs-target="#modalContacto">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            Contáctenos — Envíenos su opinión
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+                    <div class="map-wrapper">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3500!2d-82.40623!3d23.136062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDA4JzA5LjgiTiA4MsKwMjQnMjIuNCJX!5e0!3m2!1ses!2scu!4v1700000000000!5m2!1ses!2scu" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         MODAL CONTACTO
+         ============================================ -->
+    <div class="modal fade" id="modalContacto" tabindex="-1" aria-labelledby="modalContactoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-content-digi">
+                <div class="modal-header modal-header-digi">
+                    <h5 class="modal-title" id="modalContactoLabel">
+                        <i class="fa-solid fa-envelope-open-text me-2"></i>
+                        Contáctenos — Envíenos su opinión
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body modal-body-digi">
+                    <form id="formContacto">
+                        <div class="mb-3">
+                            <label for="asunto" class="form-label fw-semibold" style="color: var(--azul-marino);">Asunto:</label>
+                            <input type="text" class="form-control form-control-digi" id="asunto" placeholder="Escriba el asunto de su mensaje" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="descripcion" class="form-label fw-semibold" style="color: var(--azul-marino);">Descripción:</label>
+                            <textarea class="form-control form-control-digi" id="descripcion" rows="5" placeholder="Escriba su mensaje u opinión aquí..." required></textarea>
+                        </div>
+                        <div class="d-flex gap-3 justify-content-end">
+                            <button type="button" class="btn btn-cerrar-digi" data-bs-dismiss="modal">
+                                <i class="fa-solid fa-xmark me-1"></i> Cerrar
+                            </button>
+                            <button type="submit" class="btn btn-enviar-digi">
+                                <i class="fa-solid fa-paper-plane me-1"></i> Enviar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="footer-digicont">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p>&copy; 2025 <a href="#inicio">DigiCont Servicios Contables</a>. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p>¡Contabilizamos tu éxito!</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         SCROLL TO TOP
+         ============================================ -->
+    <button class="scroll-top-btn" id="scrollTopBtn" title="Ir arriba">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <!-- ============================================
+         TOAST NOTIFICACIÓN
+         ============================================ -->
+    <div class="toast-digi" id="toastDigi">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toastMessage">Mensaje enviado correctamente</span>
+    </div>
+
+    <!-- ============================================
+         SCRIPTS
+         ============================================ -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // =============================================
+        // Inicializar AOS
+        // =============================================
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 60
+        });
+
+        // =============================================
+        // Navbar: efecto scroll y enlace activo
+        // =============================================
+        const navbar = document.getElementById('mainNav');
+        const navLinks = document.querySelectorAll('.nav-link-digi');
+        const sections = document.querySelectorAll('section[id]');
+
+        function handleScroll() {
+            // Navbar background
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Active link
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Scroll to top button
+            const scrollBtn = document.getElementById('scrollTopBtn');
+            if (window.scrollY > 600) {
+                scrollBtn.classList.add('visible');
+            } else {
+                scrollBtn.classList.remove('visible');
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+
+        // =============================================
+        // Scroll to top
+        // =============================================
+        document.getElementById('scrollTopBtn').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // =============================================
+        // Cerrar menú móvil al hacer clic
+        // =============================================
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const navCollapse = document.getElementById('navContent');
+                const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
+                if (bsCollapse) {
+                    bsCollapse.hide();
+                }
+            });
+        });
+
+        // =============================================
+        // Formulario de contacto (Modal)
+        // =============================================
+        document.getElementById('formContacto').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const asunto = document.getElementById('asunto').value.trim();
+            const descripcion = document.getElementById('descripcion').value.trim();
+
+            if (!asunto || !descripcion) {
+                showToast('Por favor, complete todos los campos.', 'warning');
+                return;
+            }
+
+            // Aquí puedes integrar el envío real (API, EmailJS, etc.)
+            console.log('Asunto:', asunto);
+            console.log('Descripción:', descripcion);
+
+            // Cerrar modal
+            const modal = bootstrap.Modal.getInstance(document.getElementById('modalContacto'));
+            modal.hide();
+
+            // Limpiar formulario
+            this.reset();
+
+            // Mostrar confirmación
+            showToast('¡Mensaje enviado correctamente! Nos pondremos en contacto pronto.');
+        });
+
+        // =============================================
+        // Toast personalizado
+        // =============================================
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toastDigi');
+            const toastMsg = document.getElementById('toastMessage');
+            const icon = toast.querySelector('i');
+
+            toastMsg.textContent = message;
+
+            if (type === 'warning') {
+                icon.className = 'fa-solid fa-triangle-exclamation';
+                toast.style.background = 'linear-gradient(135deg, #e67e22, #d35400)';
+            } else {
+                icon.className = 'fa-solid fa-circle-check';
+                toast.style.background = 'linear-gradient(135deg, #003399, #6666FF)';
+            }
+
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+
+        // =============================================
+        // Responsive: ajustar equipo en móvil
+        // =============================================
+        function adjustTeamLayout() {
+            const teamItems = document.querySelectorAll('#equipo .row > [style*="width: 19%"]');
+            if (window.innerWidth < 992) {
+                teamItems.forEach(item => {
+                    item.style.width = '';
+                    item.style.flex = '';
+                });
+            } else {
+                teamItems.forEach(item => {
+                    item.style.width = '19%';
+                    item.style.flex = '0 0 auto';
+                });
+            }
+        }
+
+        window.addEventListener('resize', adjustTeamLayout);
+        adjustTeamLayout();
+    </script>
+</body>
+</html>
